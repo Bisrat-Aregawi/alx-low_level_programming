@@ -24,14 +24,3 @@ void print_alphabet_x10(void)
 		putchar('\n');
 	}
 }
-
-/**
- * main - Function that first executes
- *
- * Return: 0
- */
-int main(void)
-{
-	print_alphabet_x10();
-	return (0);
-}
