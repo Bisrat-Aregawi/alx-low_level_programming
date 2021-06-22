@@ -1,11 +1,20 @@
 #include "holberton.h"
 
 /**
- * main- Function that first executes
+ * print_alphabet - Function that prints alphabets
  *
- * Return: 0
+ * Return: void
  */
-int main(void)
+void print_alphabet(void)
 {
-	return (0);
+	int i;
+
+	i = 0;
+
+	while (i <= 25)
+	{
+		_putchar((i + 97));
+		i++;
+	}
+	_putchar('\n');
 }
