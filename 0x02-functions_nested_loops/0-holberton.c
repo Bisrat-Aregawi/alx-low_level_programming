@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "holberton.h"
 
 /**
  * main - Function that first executes
@@ -7,7 +8,6 @@
  */
 int main(void)
 {
-	printf("Holberton\n");
-
+	writeHolberton();
 	return (0);
 }
