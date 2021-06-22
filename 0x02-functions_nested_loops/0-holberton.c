@@ -1,13 +1,21 @@
-#include <stdio.h>
 #include "holberton.h"
 
 /**
- * main - Function that first executes
+ * main - Function that writes the string Holberton
  *
  * Return: 0
  */
 int main(void)
 {
-	writeHolberton();
+	int i = 0;
+	char c[] = "Holberton";
+
+	while (i < 9)
+	{
+		_putchar(c[i]);
+		i++;
+	}
+	_putchar('\n');
+
 	return (0);
 }
