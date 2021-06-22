@@ -1,22 +1,23 @@
 #include <stdio.h>
+#include "holberton.h"
 
 /**
- * print_sign - prints the sign of a number
+ * print_sign - Function that returns sign
  * @n: number to be examined
  *
- * Return: 1 if greater than 0, -1 if less and 0 if exactly 0
+ * Return: 1 if positive, -1 if negative and 0 if otherwise
  */
 int print_sign(int n)
 {
 	if (n > 0)
 	{
-		printf("+");
+		_putchar('+');
 		return (1);
 	} else if (n < 0)
 	{
-		printf("-");
+		_putchar('-');
 		return (-1);
 	}
-	printf("0");
+	_putchar('0');
 	return (0);
 }
