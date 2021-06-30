@@ -6,3 +6,4 @@ char *_strncpy(char *dest, char *src, int n);
 int _strcmp(char *s1, char *s2);
 int strLength(char *str);
 int biggest(int n1, int n2);
+void reverse_array(int *a, int n);
