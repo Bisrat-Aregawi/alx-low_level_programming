@@ -1,4 +1,6 @@
 #include "holberton.h"
+
+int digitCount(int);
 /**
  * print_number - Function that prints numbers passed to it
  * @n: Number to be printed
@@ -7,34 +9,46 @@
  */
 void print_number(int n)
 {
-	int i, j, copy, length, multi;
+	int i, j, multi;
 
-	copy = n;
-	length = 0;
 	if (n < 0)
-	{
 		_putchar(45);
-		n *= -1;
-		copy *= -1;
-	}
-	while (copy > 0)
-	{
-		copy = copy / 10;
-		length++;
-	}
 	if (n == 0)
-	{
 		_putchar(48);
-	} else
+	else if (n == -1)
+		_putchar(49);
+	else
 	{
-		for (i = length; i > 0; i--)
+		for (i = digitCount(n); i > 0; i--)
 		{
 			multi = 1;
 			for (j = 0; j < i - 1; j++)
-			{
 				multi *= 10;
-			}
-			_putchar(((n / multi) % 10) + 48);
+			if (n < 0)
+				_putchar((-1) * ((n / multi) % 10) + 48);
+			else
+				_putchar(((n / multi) % 10) + 48);
 		}
 	}
+}
+
+/**
+ * digitCount - Function returns the number of digits of a number
+ * @n: Number to be examined
+ *
+ * Return: Number of digits of @n
+ */
+int digitCount(int n)
+{
+	int length;
+
+	length = 0;
+	if (n < 0)
+		n = (n + 1) * (-1);
+	while (n != 0)
+	{
+		n /= 10;
+		length++;
+	}
+	return (length);
 }
