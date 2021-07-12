@@ -1,5 +1,4 @@
 #include "holberton.h"
-int recur(char **, int, int);
 
 /**
  * main - Function adds passed arguments
@@ -15,12 +14,13 @@ int main(int argc, char *argv[])
 		printf("%d\n", 0);
 		exit(EXIT_SUCCESS);
 	} else
-		printf("%d\n", recur(argv, argc, 1));
+		printf("%d\n", level1Recur(argv, argc, 1));
+
 	exit(EXIT_SUCCESS);
 }
 
 /**
- * recur - Function recursively addes arguments passed
+ * level1Recur - Function recursively addes arguments passed
  * from the main function
  * @arr: Arry of arguments passed directly from main
  * @length: Number of arguments passed directly from main
@@ -28,14 +28,48 @@ int main(int argc, char *argv[])
  *
  * Return: Sum of arguments. 0 if one of them are not a number
  */
-int recur(char *arr[], int length, int idx)
+int level1Recur(char *arr[], int length, int idx)
 {
+	int retVal;
+
+	retVal = 1;
+
 	if (idx == length)
 		return (0);
-	else if (atoi(*(arr + idx)) == 0 && *(*arr + idx) != 48)
+	else if (atoi(*(arr + idx)) < 0)
 	{
 		printf("Error\n");
 		exit(EXIT_FAILURE);
 	}
-	return (atoi(*(arr + idx)) + recur(arr, length, idx + 1));
+	else if (**(arr + idx) < '0' && **(arr + idx) > '9')
+	{
+		printf("Error\n");
+		exit(EXIT_FAILURE);
+	}
+	level2Recur(*(arr + idx), &retVal, 0);
+	if (!retVal)
+	{
+		printf("Error\n");
+		exit(EXIT_FAILURE);
+	}
+	return (atoi(*(arr + idx)) + level1Recur(arr, length, idx + 1));
+}
+
+/**
+ * level2Recur - Function recursively checks each string
+ * in the argument array
+ * @str: String pointer passed
+ * @ret: Integer pointer for checking NUMNESS
+ * @idx: Index for string pointer traversal
+ *
+ * Return: void
+ */
+void level2Recur(char *str, int *ret, int idx)
+{
+	if (*(str + idx))
+	{
+		if (*(str + idx) < '0' || *(str + idx) > '9')
+			*ret = 0;
+		level2Recur(str, ret, idx + 1);
+	}
 }
