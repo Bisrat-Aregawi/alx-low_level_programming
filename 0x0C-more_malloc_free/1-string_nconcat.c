@@ -1,4 +1,5 @@
 #include "holberton.h"
+void concat(char *, char *, int);
 
 /**
  * string_nconcat - Function concatenates strings upto certain length
@@ -10,98 +11,46 @@
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	int i, j, totlen;
+	/*
+	 * The expression "(s2len > n) ? n : s2len"
+	 * is to check if the number of bytes to concatenate
+	 * doesn't exceed the actual length of s2, if so we
+	 * reset assign length of s2 instead of n.
+	 */
+
+	unsigned int s1len, s2len;
 	char *str;
-	int nullnessRes = nullnessChk(s1, s2);
 
-	i = 0, j = 0;
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
 
-	if (s1 == NULL && s2 != NULL)
-	{
-		if (n >= strlen(s2))
-			totlen = strlen(s2);
-		else
-			totlen = n;
+	s1len = strlen(s1), s2len = strlen(s2);
 
-		str = malloc(sizeof(char) * totlen + 1);
-
-		if (str == NULL)
-			return (NULL);
-
-		while (i < totlen)
-		{
-			if (*(s1 + i))
-				*(str + i) = *(s2 + i);
-			else
-				break;
-			i++;
-		}
-	} else if (s1 != NULL && s2 == NULL)
-	{
-		totlen = strlen(s1);
-
-		str = malloc(sizeof(char) * totlen + 1);
-
-		if (str == NULL)
-			return (NULL);
-
-		while (*s1)
-		{
-			*s1 = *str;
-			s1++;
-			str++;
-		}
-	} else if ( s1 != NULL && s2 != NULL)
-	{
-		totlen = (n >= strlen(s2)) ? strlen(s1) + strlen(s2) : strlen(s1) + n;
-
-		str = malloc(sizeof(char) * totlen + 1);
-
-		if (str == NULL)
-			return (NULL);
-
-		while (i < totlen)
-		{
-			if (*(s1 + i))
-				*(str + i) = *(s1 + i);
-			else
-				break;
-			i++;
-		}
-		while (i < totlen)
-		{
-			*(str + i) = *(s2 + j);
-			i++;
-			j++;
-		}
-
-	} else
+	str = malloc(s1len + ((s2len > n) ? n : s2len) + 1);
+	if (str == NULL)
 		return (NULL);
-	*(str + i) = '\0';
 
+	concat(str, s1, s1len);
+	concat(str + s1len, s2, ((s2len > n) ? n : s2len));
+
+	*(str + s1len + ((s2len > n) ? n : s2len)) = '\0';
 	return (str);
 }
 
-int nullnessChk (char *s1, char *s2)
+/**
+ * concat - Function concatenates string sent to it
+ * @s: String to copy from
+ * @str: String to copy on to
+ * @n: Position of str to begin copying on to
+ *
+ * Return: void
+ */
+void concat(char *str, char *s, int n)
 {
-	if (s1 == NULL && s2 != NULL)
-		return (1);
-	else if (s1 != NULL && s2 == NULL)
-		return (2);
-	else if (s1 == NULL && s2 == NULL)
-		return (0);
-	return (3);
-}
+	int i;
 
-void concatenator (char *s, char *str)
-{
-	while (1)
-	{
-		if (*s)
-			*(str) = *s;
-		else
-			break;
-		str++;
-		s++;
-	}
+	for (i = 0; i < n; i++)
+		*(str + i) = *(s + i);
 }
