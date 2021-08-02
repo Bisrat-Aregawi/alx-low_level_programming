@@ -3,7 +3,7 @@
 /**
  * free_listint - Function frees allocated memory form the action of
  * appension to the end of a linked list passed
- * @h: Pointer to first node in linked list
+ * @head: Pointer to first node in linked list
  *
  * Return: Void
  */
