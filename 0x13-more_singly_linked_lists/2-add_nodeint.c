@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * add_nodeint - Function addes new Nodes at the begining and
+ * add_nodeint - Function adds new Nodes at the begining and
  * contents of those nodes are passed along with pointer to the head node
  * @head: Pointer to pointer to first Node in the list
  * @n: Content of new node of type 'const int'
