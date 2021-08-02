@@ -34,9 +34,9 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		else
 			break;
 	}
-	/* Have 'newNode' point to ('idx' + 1) indexed node */
+	/* Have 'newNode' point to (local_idx + 1) indexed node */
 	newNode->next = local_head->next;
-	/* Have ('idx' - 1) indexed node point to 'newNode' */
+	/* Have (local_idx) indexed node point to 'newNode' */
 	local_head->next = newNode;
 
 	/* Return new node inserted */
