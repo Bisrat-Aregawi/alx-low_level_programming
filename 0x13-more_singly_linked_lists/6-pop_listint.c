@@ -12,7 +12,9 @@ int pop_listint(listint_t **head)
 	int lone_n;
 	/* setup a temporary pointer to copy address of first node */
 	listint_t *remNode;
-
+	/* if 'head' doesn't have address to any node return 0 */
+	if (*head == NULL)
+		return (0);
 	/* copy first 'n' to 'lone_n' before destroying its container node */
 	lone_n = (*head)->n;
 	/* store pointer to first node in remNode */
