@@ -9,14 +9,20 @@
  */
 void free_listint2(listint_t **head)
 {
-	listint_t *tempNode1, *tempNode2;
+	/* Declare a local node to store rather disapearing addresses */
+	listint_t *prevNode;
 
-	tempNode1 = *head;
-	while (tempNode1 != NULL)
+	/* Check if 'head' itself is not NULL */
+	if (!head)
+		return;
+	/* Traverse with '*head' until '*head' becomes NULL */
+	while (*head != NULL)
 	{
-		tempNode2 = tempNode1;
-		tempNode1 = tempNode1->next;
-		free(tempNode2);
+		/* Copy current state of first node */
+		prevNode = *head;
+		/* Step one node ahead */
+		*head = (*head)->next;
+		/* Free previous node */
+		free(prevNode);
 	}
-	*head = NULL;
 }
