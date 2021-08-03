@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stdio.h>
 
 /**
  * print_listint - Function prints all elements of passed linked list
@@ -10,8 +11,11 @@ size_t print_listint(const listint_t *h)
 {
 	size_t nodeQty;
 
-	nodeQty = 0;
-	while (h != NULL)
-		nodeQty++, printf("%d\n", h->n), h = h->next;
+	if (h != NULL)
+		printf("%d\n", h->n);
+	else
+		return (0);
+
+	nodeQty = 1 + print_listint(h->next);
 	return (nodeQty);
 }
