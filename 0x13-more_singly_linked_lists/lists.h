@@ -15,6 +15,19 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
+/**
+ * struct locNode - singly linked list
+ * @num: integer
+ * @next: points to the next node
+ *
+ * Description: singly linked list node structure
+ */
+typedef struct locNode
+{
+	int num;
+	struct locNode *next;
+} datalist_t;
+
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,5 +44,6 @@ int sum_listint(listint_t *head);
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n);
 int delete_nodeint_at_index(listint_t **head, unsigned int index);
 listint_t *reverse_listint(listint_t **head);
+size_t print_listint_safe(const listint_t *head);
 
 #endif /* _LISTS_H_ */
