@@ -33,13 +33,13 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	/* Traverse list until one before 'index' */
 	while (traverser != NULL)
 	{
-		if (local_idx != (index - 1))
+		if (local_idx < (index - 1))
 			traverser = traverser->next, local_idx++;
 		else
 			break;
 	}
 	/* Reached the end and index is still big?, then return -1 */
-	if (index >= local_idx && traverser->next == NULL)
+	if (index >= local_idx && traverser == NULL)
 		return (-1);
 	/* Asign 'obsolete node' the next indexed node to free later */
 	obslNode = traverser->next;
