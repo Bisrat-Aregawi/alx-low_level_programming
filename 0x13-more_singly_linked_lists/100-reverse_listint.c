@@ -10,6 +10,9 @@ listint_t *reverse_listint(listint_t **head)
 	listint_t *prevNode, *nextNode;
 	/* Initialize them to 'NULL' to ease edge case handling */
 	prevNode = NULL, nextNode = NULL;
+	/* Make sure we we terminate if invalid arguments are passed*/
+	if (!head || *head == NULL)
+		return (NULL);
 	/* Traverse list & at each traversal manipulate pointers */
 	while ((*head)->next != NULL)
 	{
@@ -38,12 +41,7 @@ listint_t *reverse_listint(listint_t **head)
 			*head = nextNode;
 		}
 	}
-	/*
-	 * Handle the last node's link to point it to its previous node
-	 * (while is unable to do this step without an
-	 * error or a nested conditional)
-	 */
+	/* Handle the last node's link to point it to its previous node */
 	(*head)->next = prevNode;
-	/* Return the address of reversed linked list's first node */
 	return (*head);
 }
