@@ -1,14 +1,30 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
+#include <time.h>
 
-int rand(void);
 int main(void)
 {
-	time_t seconds;
+	int random_number;
+	int sum = 0;
 
-	seconds = time(NULL);
-	srand(seconds);
-	printf("%d\n", rand());
+	srand(time(NULL));
+
+	while (sum + random_number < 2739)
+	{
+		random_number = (rand() % (127 - 33 + 1)) + 33;
+		printf("%c", random_number);
+		sum += random_number;
+	}
+	while (1)
+	{
+		random_number = (rand() % (127 - 33 + 1)) + 33;
+		if (sum + random_number == 2772)
+		{
+			printf("%c", random_number);
+			break;
+		}
+	}
+	printf("\n");
+	
 	return (0);
 }
