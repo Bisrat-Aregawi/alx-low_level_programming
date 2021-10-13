@@ -1,7 +1,7 @@
 #include "lists.h"
 
-int data_is_here(datalist_t *, int);
-void free_data_list(datalist_t *);
+int data_is_here(listint_t *, int);
+void free_data_list(listint_t *);
 
 /**
  * print_listint_safe - Function prints contents of linked lists
@@ -12,7 +12,7 @@ size_t print_listint_safe(const listint_t *head)
 {
 	size_t node_qty = 0;
 	const listint_t *local_head;
-	datalist_t *dlist_head, *dlist0;
+	listint_t *dlist_head;
 
 	dlist_head = NULL;
 	if (head == NULL)
@@ -24,12 +24,7 @@ size_t print_listint_safe(const listint_t *head)
 			local_head = head;
 			break;
 		}
-		dlist0 = malloc(sizeof(datalist_t));
-		if (dlist0 == NULL)
-			exit(98);
-		dlist0->num = head->n;
-		dlist0->next = dlist_head;
-		dlist_head = dlist0;
+		add_nodeint(&dlist_head, head->n);
 		printf("[%p] %d\n", (void *)head, head->n);
 		node_qty++;
 		head = head->next;
@@ -47,11 +42,11 @@ size_t print_listint_safe(const listint_t *head)
  *
  * Return: 1 if number exists, 0 otherwise
  */
-int data_is_here(datalist_t *list, int num)
+int data_is_here(listint_t *list, int num)
 {
 	while (list != NULL)
 	{
-		if (list->num == num)
+		if (list->n == num)
 			return (1);
 		list = list->next;
 	}
@@ -64,11 +59,11 @@ int data_is_here(datalist_t *list, int num)
  *
  * Return: void
  */
-void free_data_list(datalist_t *d_head)
+void free_data_list(listint_t *d_head)
 {
 	while (d_head != NULL)
 	{
-		datalist_t *temp = d_head;
+		listint_t *temp = d_head;
 
 		d_head = d_head->next;
 		free(temp);
