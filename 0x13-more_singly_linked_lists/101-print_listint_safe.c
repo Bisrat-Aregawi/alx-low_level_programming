@@ -1,8 +1,5 @@
 #include "lists.h"
 
-int data_is_here(listint_t *, int);
-void free_data_list(listint_t *);
-
 /**
  * print_listint_safe - Function prints contents of linked lists
  * @head: Pointer to pointer holding address of first node

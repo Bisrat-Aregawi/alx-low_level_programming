@@ -32,5 +32,8 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n);
 int delete_nodeint_at_index(listint_t **head, unsigned int index);
 listint_t *reverse_listint(listint_t **head);
 size_t print_listint_safe(const listint_t *head);
+int data_is_here(listint_t *, int);
+void free_data_list(listint_t *);
+size_t free_listint_safe(listint_t **);
 
 #endif /* _LISTS_H_ */
